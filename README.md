@@ -1,2 +1,2 @@
 # Next
-Next - Sistema de fila para atendimento em caixas
+Sistema de fila para atendimento em caixas
