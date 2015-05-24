@@ -1,10 +1,12 @@
 package br.com.next.utils.emissorSenhas;
 
+import br.com.next.utils.UtilSenhas;
+
 public class EmissorSenhasComun implements IEmissorSenhas{
 
 	@Override
-	public void gerarSenha() {
-		System.out.println("Emitindo senha comum 123");
+	public Integer gerarSenha() {
+		return UtilSenhas.obterEIncrementaSenhaComum();
 	}
 
 }
