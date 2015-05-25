@@ -11,41 +11,47 @@ import javax.persistence.Table;
 @Table(name = "atendimento")
 public class Atendimento extends UtilBaseEntities<Long> {
 
-    private static final long serialVersionUID = -7565601921892921834L;
+	private static final long serialVersionUID = -7565601921892921834L;
 
-    @OneToOne
-    private Senha senha;
+	@OneToOne
+	private Senha senha;
 
-    @OneToOne
-    private Guiche guiche;
+	@OneToOne
+	private Guiche guiche;
 
-    @SuppressWarnings("unused")
 	private Timestamp dataAtendido;
 
-    public Atendimento(Senha senha, Guiche guiche, Timestamp dataAtendido) {
-        this.senha = senha;
-        this.guiche = guiche;
-        this.dataAtendido = dataAtendido;
-    }
+	public Atendimento() {
+		this.dataAtendido = new Timestamp(new Date().getTime());
+	}
 
-    public Senha getSenha() {
-        return senha;
-    }
+	public Atendimento(Senha senha, Guiche guiche, Timestamp dataAtendido) {
+		this.senha = senha;
+		this.guiche = guiche;
+		this.dataAtendido = dataAtendido;
+	}
 
-    public void setSenha(Senha senha) {
-        this.senha = senha;
-    }
+	public Senha getSenha() {
+		return senha;
+	}
 
-    public Guiche getGuiche() {
-        return guiche;
-    }
+	public void setSenha(Senha senha) {
+		this.senha = senha;
+	}
 
-    public void setGuiche(Guiche guiche) {
-        this.guiche = guiche;
-    }
+	public Guiche getGuiche() {
+		return guiche;
+	}
 
-    public Atendimento() {
-        this.dataAtendido = new Timestamp(new Date().getTime());
-    }
+	public void setGuiche(Guiche guiche) {
+		this.guiche = guiche;
+	}
 
+	public Timestamp getDataAtendido() {
+		return dataAtendido;
+	}
+
+	public void setDataAtendido(Timestamp dataAtendido) {
+		this.dataAtendido = dataAtendido;
+	}
 }

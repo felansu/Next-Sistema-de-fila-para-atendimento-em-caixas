@@ -35,7 +35,7 @@ public class ControllerSenha extends ControllerGenerico<Senha> {
 	 * @return última senha
 	 */
 	@RequestMapping(value = "/solicitarSenhaComum", method = RequestMethod.GET)
-	public ResponseEntity<Integer> solicitarSenhaComum() {
+	public ResponseEntity<Senha> solicitarSenhaComum() {
 		Senha ultimaSenha = repository.trazerUltimaSenha();
 		Senha novaSenha = new Senha();
 		if (ultimaSenha != null) {
@@ -45,11 +45,11 @@ public class ControllerSenha extends ControllerGenerico<Senha> {
 		}
 		novaSenha.setTipo(EnumTipoSenha.COMUM);
 		this.repository.save(novaSenha);
-		return new ResponseEntity<Integer>(novaSenha.getSenha(), HttpStatus.OK);
+		return new ResponseEntity<Senha>(novaSenha, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/solicitarSenhaPreferencial", method = RequestMethod.GET)
-	public ResponseEntity<Integer> solicitarSenhaPreferencial() {
+	public ResponseEntity<Senha> solicitarSenhaPreferencial() {
 		Senha ultimaSenha = repository.trazerUltimaSenha();
 		Senha novaSenha = new Senha();
 		if (ultimaSenha != null) {
@@ -59,17 +59,7 @@ public class ControllerSenha extends ControllerGenerico<Senha> {
 		}
 		novaSenha.setTipo(EnumTipoSenha.PREFERENCIAL);
 		this.repository.save(novaSenha);
-		return new ResponseEntity<Integer>(novaSenha.getSenha(), HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/senhasComunsAguardando", method = RequestMethod.GET)
-	public ResponseEntity<List<Senha>> senhasComunsAguardando() {
-		return new ResponseEntity<List<Senha>>(repository.senhasComunsAguardando(), HttpStatus.OK);
-	}
-	
-	@RequestMapping(value = "/senhasPreferenciaisAguardando", method = RequestMethod.GET)
-	public ResponseEntity<List<Senha>> senhasPreferenciaisAguardando() {
-		return new ResponseEntity<List<Senha>>(repository.senhasPreferenciaisAguardando(), HttpStatus.OK);
+		return new ResponseEntity<Senha>(novaSenha, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/senhasAguardando", method = RequestMethod.GET)

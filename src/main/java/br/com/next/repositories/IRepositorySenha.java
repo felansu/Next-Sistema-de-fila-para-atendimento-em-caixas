@@ -30,4 +30,7 @@ public interface IRepositorySenha extends CrudRepository<Senha, Long>, IReposito
 	@Query("SELECT T1 FROM Senha T1 WHERE T1.id = (SELECT MIN(id) FROM Senha WHERE foiAtendido = false)")
 	Senha trazerPrimeiraSenha();
 	
+	@Query("SELECT T1 FROM Senha T1 WHERE T1.id = (SELECT MIN(id) FROM Senha WHERE foiAtendido = false AND tipo = '1')")
+	Senha trazerPrimeiraSenhaPreferencial();
+	
 }

@@ -12,7 +12,6 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import br.com.next.model.enums.EnumGuicheEstados;
 import br.com.next.service.observer.Acao;
 import br.com.next.service.observer.IAcaoObserver;
-import br.com.next.utils.UtilSenhas;
 
 @Entity
 @Table(name = "guiche")
@@ -26,7 +25,7 @@ public class Guiche extends UtilBaseEntities<Long> implements IAcaoObserver {
 	@OneToOne
 	@RestResource(exported = false)
 	private Usuario usuario;
-	
+
 	@SuppressWarnings("unused")
 	private Timestamp dataApertura;
 
@@ -68,8 +67,7 @@ public class Guiche extends UtilBaseEntities<Long> implements IAcaoObserver {
 	@Override
 	public void notificaAlteracao(Acao acao) {
 		if (acao.getEstado().equals(EnumGuicheEstados.DISPONIVEL)) {
-			// UtilDorme.dorme2();
-			System.out.println("Guiche Nº " + this.numero + " " + acao.getEstado() + "\nSenha: " + UtilSenhas.obterEIncrementaSenhaComum());
+			System.out.println("Guiche Nº " + this.numero + " " + acao.getEstado());
 		}
 	}
 
