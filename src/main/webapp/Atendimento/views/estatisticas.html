@@ -1,0 +1,1 @@
+<h2>Atendimento diário por guichê</h2> <br> <table st-table="rowCollection" class="table table-striped" ng-if="!!atendimentos.length"> <thead> <tr> <th>Nº Guiche <th>Nº Atendimentos realizados hoje   <tbody> <tr ng-repeat="atendimento in atendimentos"> <td>{{atendimento[0]}} <td>{{atendimento[1]}}   </table> <h3>Media de atendimento diário por guichê: {{ getTotal() }}</h3>
