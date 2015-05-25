@@ -73,6 +73,15 @@ public class ControllerAtendimento extends ControllerGenerico<Atendimento> {
 		return new ResponseEntity<Long>(tempoTotal, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/quantidadeAtendimentosPorGuiche", method = RequestMethod.GET)
+	public ResponseEntity<List<Object[]>> quantidadeAtendimentosPorGuiche() {
+		List<Object[]> atendimentos = repository.trazerAtendimentosPorGuiche();
+		if (atendimentos == null) {
+			return new ResponseEntity<List<Object[]>>(atendimentos, HttpStatus.PRECONDITION_REQUIRED);
+		}
+		return new ResponseEntity<List<Object[]>>(atendimentos, HttpStatus.OK);
+	}
+	
 	
 	
 	

@@ -19,4 +19,7 @@ public interface IRepositoryAtendimento extends CrudRepository<Atendimento, Long
 
 	@Query("SELECT T1 FROM Atendimento T1 ORDER BY T1.dataAtendido DESC")
 	List<Atendimento> trazerUltimosAtendimentos();
+	
+	@Query("SELECT T1.guiche.numero, COUNT(T1.id) FROM Atendimento AS T1 GROUP BY T1.guiche.numero")
+	List<Object[]> trazerAtendimentosPorGuiche();
 }
